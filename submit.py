@@ -19,7 +19,7 @@ ADDITIONAL_INFORMATION = "I am currently a sophomore at Hunter College, majoring
 
 
 browser = webdriver.Chrome()
-browser.get('https://jobs.lever.co/applied/c22805d5-2006-4867-bb32-671951b17206/apply')
+browser.get('https://jobs.lever.co/unify/dca0a7bd-41ab-4f24-a1c3-3176520f7437/apply')
 browser.find_element_by_xpath('//input[@name = "resume"]').send_keys(RESUME)
 browser.find_element_by_xpath('//input[@name = "name"]').send_keys(FULL_NAME)
 # browser.find_element_by_xpath('//input[@name = "email"]').clear()
