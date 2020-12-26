@@ -5,17 +5,17 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 
-RESUME = "THIS SHOULD BE A PATH"
-FIRST_NAME = ""
-LAST_NAME = ""
-FULL_NAME = ""
-EMAIL = ""
-SCHOOL_EMAIL = ""
-PHONE = ""
-LINKEDIN_URL = ""
-GITHUB_URL = ""
-CURRENT_COMPANY = ""
-ADDITIONAL_INFORMATION = ""
+RESUME = "/Users/ghazshahbaz/documents/projects/submit_applications/Ghazanfar_Shahbaz_Resume.pdf"
+FIRST_NAME = "Ghazanfar" 
+LAST_NAME = 'Shahbaz'
+FULL_NAME = "Ghazanfar Shahbaz"
+EMAIL = 'ghazanfarshahbaz2409@gmail.com'
+SCHOOL_EMAIL = 'ghazanfar.shahbaz95@myhunter.cuny.edu'
+PHONE = '(1)347-493-6743'
+LINKEDIN_URL = 'https://www.linkedin.com/in/GhazanfarShahbaz/'
+GITHUB_URL = 'https://github.com/GhazanfarShahbaz'
+CURRENT_COMPANY = 'UnitedHealth Group'
+ADDITIONAL_INFORMATION = "I am currently a sophomore at Hunter College, majoring in computer science and minoring in math and philosophy. At Hunter I am the core tech lead and treasurer of the Google Student Developer Club as well as a part of the the Thomas Hunters Honors Program. I am currently interning at UnitedHealth Group as a software engineer intern. In my free time i spend time reading books, cooking, and playing videogames."
 
 
 CUSTOM_QUESTIONS_ANSWERS = {
