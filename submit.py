@@ -45,17 +45,12 @@ def customQuestions(browser) -> None:
 
 
 if __name__ == "__main__":
-
     data = processData()
 
-    CUSTOM_QUESTIONS_ANSWERS = {
-        "How did you hear about us?" : "TEST1",
-        "Given the pandemic, what is your internship plan? When are you available to start?" : "TEST2"
-    }
-    CUSTOM_QUESTIONS = []
+    link = input("What is the link for the application?")
 
     browser = webdriver.Chrome()
-    browser.get('https://jobs.lever.co/unify/dca0a7bd-41ab-4f24-a1c3-3176520f7437/apply') # Test link
+    browser.get(link)
 
     inputBasicData(browser, data)
     customQuestions(browser)
