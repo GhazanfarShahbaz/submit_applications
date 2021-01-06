@@ -21,7 +21,10 @@ def processData() -> dict:
 def inputBasicData(browser, data: dict) -> None:
     browser.find_element_by_xpath('//input[@name = "resume"]').send_keys(data['RESUME'])
     browser.find_element_by_xpath('//input[@name = "name"]').send_keys(data['FULL_NAME'])
-    # browser.find_element_by_xpath('//input[@name = "email"]').clear()
+    try:
+        browser.find_element_by_xpath('//input[@name = "email"]').clear()
+    except:
+        pass
     browser.find_element_by_xpath('//input[@name = "email"]').send_keys(data['PHONE'])
     browser.find_element_by_xpath('//input[@name = "phone"]').send_keys(data['PHONE'])
     browser.find_element_by_xpath('//input[@name = "org"]').send_keys(data['CURRENT_COMPANY'])
@@ -35,9 +38,9 @@ def customQuestions(browser) -> None:
     CUSTOM_QUESTIONS = []
 
     for x in browser.find_elements_by_xpath('//div[@class="application-label full-width textarea"]'):
-        val = x.text
-        val = val[0: len(val)-1].strip()
-        CUSTOM_QUESTIONS.append(val)
+        question = x.text
+        question = question[0: len(question)-1].strip()
+        CUSTOM_QUESTIONS.append(question)
 
     for index, textbox in enumerate(browser.find_elements_by_xpath('//textarea[@class="card-field-input"]')):
         answer = input(f"{CUSTOM_QUESTIONS[index]}")
