@@ -5,10 +5,19 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 
-# Maybe better to just put this into a text file?
 
-data = {line[:line.find("=")].strip(): line[line.find("=")+1:].strip() for line in open("data.txt", "r")}
+def processData() -> dict:
+    data = {}
+    dataFile = open("data.txt", "r")
 
+    for line in dataFile:
+        partitiionAt = line.find("=")
+        data[line[:partitiionAt].strip()] = line[partitiionAt:].strip()
+
+    dataFile.close()
+    return data
+
+data = processData()
 
 CUSTOM_QUESTIONS_ANSWERS = {
     "How did you hear about us?" : "TEST1",
