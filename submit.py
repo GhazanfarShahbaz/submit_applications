@@ -59,7 +59,7 @@ def applicationSubmit(data, link):
     inputBasicData(browser, data)
     customQuestions(browser)
 
-    userContinue = True if input("Do you want to submit?") == "T" else "F"
+    userContinue = True if input("Do you want to submit?").upper() == "T" else "F"
     if userContinue:
         browser.find_element_by_xpath('//button[@class = "postings-btn template-btn-submit cerulean"]').click()
         browser.close()
