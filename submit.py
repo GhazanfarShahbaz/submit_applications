@@ -31,6 +31,19 @@ def inputBasicData(browser, data: dict) -> None:
     browser.find_element_by_xpath('//textarea[@name = "comments"]').send_keys(data['ADDITIONAL_INFORMATION'])
 
 
+def customQuestions(browser) -> None:
+    CUSTOM_QUESTIONS = []
+
+    for x in browser.find_elements_by_xpath('//div[@class="application-label full-width textarea"]'):
+        val = x.text
+        val = val[0: len(val)-1].strip()
+        CUSTOM_QUESTIONS.append(val)
+
+    for index, textbox in enumerate(browser.find_elements_by_xpath('//textarea[@class="card-field-input"]')):
+        answer = input(f"{CUSTOM_QUESTIONS[index]}")
+        textbox.send_keys(answer)
+
+
 if __name__ == "__main__":
 
     data = processData()
@@ -42,34 +55,14 @@ if __name__ == "__main__":
     CUSTOM_QUESTIONS = []
 
     browser = webdriver.Chrome()
-    browser.get('https://jobs.lever.co/unify/dca0a7bd-41ab-4f24-a1c3-3176520f7437/apply')
-
-    # for x in browser.find_elements_by_xpath("//input"):
-    #     print(x.text)
+    browser.get('https://jobs.lever.co/unify/dca0a7bd-41ab-4f24-a1c3-3176520f7437/apply') # Test link
 
     inputBasicData(browser, data)
+    customQuestions(browser)
 
-    #next line is submit
-    # browser.find_element_by_xpath('//button[@class = "postings-btn template-btn-submit cerulean"]').click()
-
-    """
-    Have to make it so that custom questions ask for input
-    """
-
-
-    for x in browser.find_elements_by_xpath('//div[@class="application-label full-width textarea"]'):
-        val = x.text
-        val = val[0: len(val)-1].strip()
-        CUSTOM_QUESTIONS.append(val)
-
-
-    for x,y in enumerate(browser.find_elements_by_xpath('//textarea[@class="card-field-input"]')):
-        # y.send_keys(CUSTOM_QUESTIONS_ANSWERS(CUSTOM_QUESTIONS[x]))
-        q = CUSTOM_QUESTIONS[x]
-        a = CUSTOM_QUESTIONS_ANSWERS[q]
-        y.send_keys(a)
-        # print(CUSTOM_QUESTIONS_ANSWERS(CUSTOM_QUESTIONS[x]))
-
-    print(CUSTOM_QUESTIONS)
-
-    browser.close()
+    userContinue = True if input("Do you want to submit?") == "T" else "F"
+    if userContinue:
+        browser.find_element_by_xpath('//button[@class = "postings-btn template-btn-submit cerulean"]').click()
+        browser.close()
+    else:
+        print("Press on the screen to take over")
