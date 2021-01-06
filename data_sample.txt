@@ -1,0 +1,12 @@
+RESUME = "path to resume"
+FIRST_NAME = ""
+LAST_NAME = ''
+FULL_NAME = ""
+EMAIL = ''
+SCHOOL_EMAIL = ''
+PHONE = ''
+LINKEDIN_URL = ''
+GITHUB_URL = ''
+CURRENT_COMPANY = ''
+ADDITIONAL_INFORMATION = ""
+
