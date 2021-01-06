@@ -45,8 +45,6 @@ def customQuestions(browser) -> None:
 
 
 def applicationSubmit(data, link):
-    link = input("What is the link for the application?")
-
     browser = webdriver.Chrome()
     try:
         browser.get(link)
