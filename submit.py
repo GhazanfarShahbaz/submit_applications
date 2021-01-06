@@ -44,13 +44,16 @@ def customQuestions(browser) -> None:
         textbox.send_keys(answer)
 
 
-if __name__ == "__main__":
-    data = processData()
-
+def applicationSubmit(data, link):
     link = input("What is the link for the application?")
 
     browser = webdriver.Chrome()
-    browser.get(link)
+    try:
+        browser.get(link)
+    except:
+        print("This may be an invalid link")
+        browser.close()
+        return
 
     inputBasicData(browser, data)
     customQuestions(browser)
@@ -61,3 +64,21 @@ if __name__ == "__main__":
         browser.close()
     else:
         print("Press on the screen to take over")
+
+
+def batchSubmit(data):
+    linkFile = open("links.txt", "r")
+
+    for line in linkFile:
+        applicationSubmit(data, link)
+
+    linkFile.close()
+
+
+if __name__ == "__main__":
+    data = processData()
+
+    if(input("Batch Submit? Y or N: ").upper() == "Y"):
+        batchSubmit(data)
+    else:
+        applicationSubmit(input("What is the link for the application?"), data)
